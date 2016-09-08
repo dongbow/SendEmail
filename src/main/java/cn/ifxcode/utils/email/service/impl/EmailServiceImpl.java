@@ -38,19 +38,16 @@ public class EmailServiceImpl implements EmailService {
 		try {
 			messageHelper = new MimeMessageHelper(mailMessage, true, "UTF-8");
 			if (address != null) {
-				InternetAddress[] addresses = this.formatString(address);
-				messageHelper.setTo(addresses);
+				messageHelper.setTo(this.formatString(address));
 			}
 			if (ccAddress != null) {
-				InternetAddress[] ccAddresses = this.formatString(ccAddress);
-				messageHelper.setCc(ccAddresses);
+				messageHelper.setCc(this.formatString(ccAddress));
 			}
 			messageHelper.setFrom(email);
 			messageHelper.setSubject(subject);
 			messageHelper.setText(new StringBuilder("<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head></body>")
 					.append(msg).append("</body></html>").toString(), true);
 				if(null!=fileList&&fileList.length>0){
-
 					for (File attachFile : fileList) {
 						messageHelper.addAttachment(attachFile.getName(), attachFile);
 					}
@@ -71,14 +68,11 @@ public class EmailServiceImpl implements EmailService {
 		try {
 			messageHelper = new MimeMessageHelper(mailMessage, true, "UTF-8");
 			if (address != null) {
-				InternetAddress[] addresses = this.formatString(address);
-				messageHelper.setTo(addresses);
+				messageHelper.setTo(this.formatString(address));
 			}
 			if (ccAddress != null) {
-				InternetAddress[] ccAddresses = this.formatString(ccAddress);
-				messageHelper.setCc(ccAddresses);
+				messageHelper.setCc(this.formatString(ccAddress));
 			}
-			
 			messageHelper.setFrom(email);
 			messageHelper.setSubject(subject);
 			messageHelper.setText(new StringBuilder("<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head></body>")
