@@ -47,9 +47,8 @@ public class EmailServiceImpl implements EmailService {
 			}
 			messageHelper.setFrom(email);
 			messageHelper.setSubject(subject);
-			messageHelper.setText("<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head></body>"
-					+ msg
-					+ "</body></html>", true);
+			messageHelper.setText(new StringBuilder("<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head></body>")
+					.append(msg).append("</body></html>").toString(), true);
 				if(null!=fileList&&fileList.length>0){
 
 					for (File attachFile : fileList) {
@@ -82,9 +81,8 @@ public class EmailServiceImpl implements EmailService {
 			
 			messageHelper.setFrom(email);
 			messageHelper.setSubject(subject);
-			messageHelper.setText("<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head></body>"
-									+ msg
-									+ "</body></html>", true);
+			messageHelper.setText(new StringBuilder("<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head></body>")
+					.append(msg).append("</body></html>").toString(), true);
 			javaMailSender.send(mailMessage);
 			logger.info("sendMail end...");
 		} catch (MessagingException e) {
